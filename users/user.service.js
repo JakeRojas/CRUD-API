@@ -22,7 +22,10 @@ module.exports = {
     logActivity,
     getUserActivities,
     deactivate,
-    reactivate
+    reactivate,
+
+    getPermission,
+    createPermission
 };
 
 //===============================Simple CRUD========================================
@@ -210,7 +213,7 @@ async function logout(id, ipAddress, browserInfo) {
     if (!user) throw 'User not found';
 
     // Log the logout action
-    await logActivity(id, 'logout', ipAddress || 'Unknown IP', browserInfo || 'Unknown Browser');
+    //await logActivity(id, 'logout', ipAddress || 'Unknown IP', browserInfo || 'Unknown Browser');
 
     return { message: 'User logged out successfully' };
 }
@@ -259,4 +262,18 @@ async function getUserActivities(userId, filters = {}) {
     }
 
     return activities;
+}
+
+async function getPermission(id, params) {
+    const permission = await db.User.findOne({ where: { id: id }, attributes: [ 'id', 'permission', 'updatedAt'] });
+    if (!permission) throw 'User not found';
+
+    return permission;
+}
+async function createPermission(id, params) {
+    const permission = await db.User.findOne({ where: { id } });
+    if (!permission) throw 'User not found';
+
+    Object.assign(permission, params); 
+    await permission.save();
 }
