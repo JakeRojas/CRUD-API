@@ -1,4 +1,5 @@
 require('rootpath')();
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -9,8 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/api/users', require('./users/user.controller'));
-app.use('/api/users/profile', require('./users/user.controller'));
-app.use('/api/users/profile/password', require('./users/user.controller'));
 
 app.use(errorHandler);
 

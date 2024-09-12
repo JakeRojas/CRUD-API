@@ -14,16 +14,3 @@ function validateRequest(req, next, schema) {
         next();
     }
 }
-//==========================================================
-// module.exports = validateChangePassword;
-
-// function validateChangePassword(req, next, schema) {
-//     //const { newPassword } = req.body;
-//     const { password, newPassword, value } = schema.validate(req.body, next);
-//     if (!password || !newPassword) {
-//         next('Old password and new password are required');
-//     } else {
-//         req.body = value;
-//         next();
-//     }
-// }

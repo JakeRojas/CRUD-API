@@ -13,7 +13,7 @@ async function initialize() {
     
     await connection.end();
 
-    const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
+    const sequelize = new Sequelize(database, user, password, { host: 'localhost', dialect: 'mysql' });
 
     db.User = require('../users/user.model')(sequelize);
 
