@@ -1,19 +1,28 @@
-const { DataTypes } = require('sequelize');
+// const { DataTypes } = require('sequelize');
 
-module.exports = preferences;
+// module.exports = model;
 
-function preferences(sequelize) {
-    const attributes = {
-        prefId: { type: DataTypes.INTEGER, allowNull: false, unique: true },
-        theme: { type: DataTypes.STRING, allowNull: true },
-        notifications: { type: DataTypes.BOOLEAN, allowNull: true, defaultValue: true },
-        language: { type: DataTypes.STRING, allowNull: true }
-    };
-    const options = {
+// function model(sequelize) {
+//     const attributes = {
+//         //======For Preferences=================
+//         theme: { type: DataTypes.STRING, allowNull: true, defaultValue: 'light' },
+//         notifications: { type: DataTypes.BOOLEAN, allowNull: true, defaultValue: true },
+//         language: { type: DataTypes.STRING, allowNull: true, defaultValue: 'en' }
+    
 
-    };
-
-    const Preferences = sequelize.define('Preferences', attributes, options);
-    Preferences.sync();
-    return Preferences;
-}
+//     };
+    
+//     const options = {
+//         defaultScope: {
+//             attributes: { exclude: [
+//                 'theme', 'notifications', 'language'
+//                 ] 
+//             }
+//         }/* ,
+//         scopes: {
+//             withHash: { attributes: {} }
+//         } */
+//     };
+    
+//     return sequelize.define('Preferencesss', attributes, options);
+// }
